@@ -1,0 +1,12 @@
+.page {
+  background-color: #d0d0d0;
+  background-size: auto;
+}
+
+.page__content {
+  margin: 0 auto;
+}
+
+.main-content {
+  flex: 1;
+}
