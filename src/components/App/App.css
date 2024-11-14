@@ -10,3 +10,12 @@
 .main-content {
   flex: 1;
 }
+
+.form__input {
+  border: 1px solid #cfcfcf;
+  border-radius: 30px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+}
+
+

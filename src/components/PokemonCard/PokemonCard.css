@@ -1,0 +1,19 @@
+.pokemon__card{
+    display: flex;
+}
+
+.pokemon__name{
+    margin: 0;
+}
+
+.pokemon__image{
+    height: 200px;
+    width: 200px;
+}
+
+.moves__list{
+    font-family: "arkpixel";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
