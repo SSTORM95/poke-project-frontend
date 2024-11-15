@@ -1,8 +1,8 @@
 import React from "react";
 import "./PokemonCard.css";
-import { capitalize } from "../utils/capitalizer";
+import { capitalize } from "../../utils/capitalizer";
 
-function PokemonCard({ pokemon, locationData }) {
+function PokemonCard({ pokemon }) {
   return (
     <div className="pokemon__card">
       <h2 className="pokemon__name">{capitalize(pokemon.name)}</h2>

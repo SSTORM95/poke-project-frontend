@@ -1,47 +1,81 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
+import Main from "../Main/Main";
+import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PokemonCard from "../PokemonCard/PokemonCard";
-import { fetchPokemonData } from "../utils/api";
+import SearchPokemonModal from "../SearchPokemonModal/SearchPokemonModal";
+import { fetchPokemonList, fetchPokemonData } from "../../utils/api";
+import { generationRanges } from "../../utils/constants";
 
 function App() {
-  const [pokemonName, setPokemonName] = useState("");
-  const [locationData, setLocationData] = useState([]);
   const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonList, setPokemonList] = useState([]);
+  const [currentGeneration, setCurrentGeneration] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [activeModal, setActiveModal] = useState("");
   const [error, setError] = useState(null);
 
-  const handleChange = (event) => {
-    setPokemonName(event.target.value);
+  const handleModalClose = () => {
+    setActiveModal("");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setError(null);
-    fetchPokemonData(pokemonName)
-      .then((data) => setPokemonData(data))
-      .catch((error) => setError("Error fetching data: " + error.message));
+  const handleSearchPokemon = () => {
+    setActiveModal("search-pokemon");
   };
-  
+
+  const onPokemonSearch = (data) => {
+    setPokemonData(data);
+  };
+
+  const handleGenerationChange = (generationId) => {
+    setCurrentGeneration(generationId);
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    fetchPokemonList()
+      .then((list) => {
+        return Promise.all(
+          list.map((pokemon) => fetchPokemonData(pokemon.name))
+        ).then((detailedList) => {
+          const filteredList = detailedList.filter((pokemon) => {
+            const id = pokemon.id;
+            const range = generationRanges[currentGeneration - 1];
+            return id >= range.start && id <= range.end;
+          });
+          setPokemonList(filteredList);
+          setLoading(false);
+        });
+      })
+      .catch((error) => {
+        setError(`Error fetching data: ${error.message}`);
+        setLoading(false);
+      });
+  }, [currentGeneration]);
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
-        <div>
-          <h1>Pokémon Search</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Pokémon Name:
-              <input className="form__input" type="text" value={pokemonName} onChange={handleChange} placeholder="Pokemon Name"/>
-            </label>
-            <button type="submit">Search</button>
-          </form>
-          {pokemonData && (
-            <PokemonCard pokemon={pokemonData} locationData={locationData} />
-          )}{" "}
-        </div>
+        <Header handleSearchPokemon={handleSearchPokemon} />
+        <Main
+          pokemonList={pokemonList}
+          loading={loading}
+          error={error}
+          currentGeneration={currentGeneration}
+          onGenerationChange={handleGenerationChange}
+        />
+        {pokemonData && <PokemonCard pokemon={pokemonData} />}
+        <About/>
         <Footer />
       </div>
+      {activeModal === "search-pokemon" && (
+        <SearchPokemonModal
+          isOpen={activeModal === "search-pokemon"}
+          handleModalClose={handleModalClose}
+          onSearch={onPokemonSearch}
+        />
+      )}
     </div>
   );
 }

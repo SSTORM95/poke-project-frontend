@@ -1,13 +1,20 @@
 import "./Header.css";
 
 
-function Header() {
+function Header({handleSearchPokemon}) {
   return (
-    <div className="header">
+    <header className="header">
       <h1 className="header__text">
         Poke <span className="highlight">-</span> World
       </h1>
-    </div>
+      <button
+              onClick={handleSearchPokemon}
+              className="header__search-pokemon-btn"
+              type="button"
+            >
+              Search Pokemon
+            </button>
+    </header>
   );
 }
 

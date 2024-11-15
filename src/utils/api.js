@@ -14,3 +14,9 @@ function checkResponse(res) {
 export const fetchPokemonData = (name) => {
   return request(`${pokemonBaseUrl}/${name.toLowerCase()}`);
 };
+
+export const fetchPokemonList = () => {
+  return request(`${pokemonBaseUrl}?limit=150`).then(
+    (data) => data.results
+  );
+};

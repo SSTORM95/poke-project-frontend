@@ -1,0 +1,26 @@
+.pokemon{
+    max-width: 1360px;
+    margin: 0;
+    
+}
+
+.pokemon__info{
+display: flex;
+border: solid 1.5px red;
+}
+
+.pokemon__list{
+    padding: 0;
+    max-width: 1360px;
+    display: grid;
+    object-fit: contain;
+    grid-template-columns: repeat(auto-fit, 272px);
+    list-style: none;
+    background-color: white;
+   
+}
+
+.pokemon__name{
+    font-size: 25px;
+    margin-top: 35px;
+}
