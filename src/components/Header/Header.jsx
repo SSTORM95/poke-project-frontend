@@ -1,5 +1,6 @@
 import "./Header.css";
-
+import { Link } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
 function Header({handleSearchPokemon}) {
   return (
@@ -7,6 +8,7 @@ function Header({handleSearchPokemon}) {
       <h1 className="header__text">
         Poke <span className="highlight">-</span> World
       </h1>
+      <Navigation/>
       <button
               onClick={handleSearchPokemon}
               className="header__search-pokemon-btn"
@@ -14,6 +16,7 @@ function Header({handleSearchPokemon}) {
             >
               Search Pokemon
             </button>
+          
     </header>
   );
 }

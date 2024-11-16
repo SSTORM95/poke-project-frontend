@@ -13,3 +13,5 @@ export const generationNames = [
     'Generation I', 'Generation II', 'Generation III', 'Generation IV', 
     'Generation V', 'Generation VI', 'Generation VII', 'Generation VIII'
   ];
+
+export const pokemonBaseUrl = "https://pokeapi.co/api/v2/pokemon";

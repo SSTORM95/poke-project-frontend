@@ -1,8 +1,14 @@
 import React from "react";
 import "./PokemonCard.css";
 import { capitalize } from "../../utils/capitalizer";
+import { useNavigate } from 'react-router-dom';
 
 function PokemonCard({ pokemon }) {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/");
+  };
   return (
     <div className="pokemon__card">
       <h2 className="pokemon__name">{capitalize(pokemon.name)}</h2>
@@ -36,6 +42,7 @@ function PokemonCard({ pokemon }) {
           <li key={typeInfo.type.name}>{typeInfo.type.name}</li>
         ))}
       </ul>
+      <button onClick={handleBackClick}>Back to Pokedex</button>
     </div>
   );
 }

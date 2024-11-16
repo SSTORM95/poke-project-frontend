@@ -1,6 +1,15 @@
 @font-face { 
-    font-family: "arkPixel"; 
+    font-family: "CabinetGrotesk"; 
     font-style: normal; 
     font-weight: 500; 
     font-display: swap; 
-    src: url("./fonts/ark-pixel-12px-proportional-latin.woff2") format("woff2"); }
+    src: url("./fonts/CabinetGrotesk-Medium.woff2") format("woff2"); }
+
+
+@font-face { 
+    font-family: "CabinetGrotesk"; 
+    font-style: normal; 
+    font-weight: 700; 
+    font-display: swap;
+     src: url("./fonts/CabinetGrotesk-Bold.woff2") format("woff2"); }
+     

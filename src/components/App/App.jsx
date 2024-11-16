@@ -1,5 +1,12 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import About from "../About/About";
@@ -15,7 +22,11 @@ function App() {
   const [currentGeneration, setCurrentGeneration] = useState(1);
   const [loading, setLoading] = useState(true);
   const [activeModal, setActiveModal] = useState("");
+  const [currentPokemon, setCurrentPokemon] = useState(null);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleModalClose = () => {
     setActiveModal("");
@@ -27,10 +38,15 @@ function App() {
 
   const onPokemonSearch = (data) => {
     setPokemonData(data);
+    navigate(`/pokemon/${data.name}`);
   };
 
   const handleGenerationChange = (generationId) => {
     setCurrentGeneration(generationId);
+  };
+
+  const handlePokemonClick = (pokemon) => {
+    setPokemonData(pokemon);
   };
 
   useEffect(() => {
@@ -54,21 +70,58 @@ function App() {
         setLoading(false);
       });
   }, [currentGeneration]);
+
+  useEffect(() => {
+    const pathSegments = location.pathname.split("/");
+    const name = pathSegments.length > 2 ? pathSegments[2] : null;
+    if (name) {
+      setLoading(true);
+      fetchPokemonData(name)
+        .then((data) => {
+          setCurrentPokemon(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(`Error fetching data: ${err.message}`);
+          setLoading(false);
+        });
+    }
+  }, [location]);
   return (
     <div className="page">
-      <div className="page__content">
-        <Header handleSearchPokemon={handleSearchPokemon} />
-        <Main
-          pokemonList={pokemonList}
-          loading={loading}
-          error={error}
-          currentGeneration={currentGeneration}
-          onGenerationChange={handleGenerationChange}
+      <Header handleSearchPokemon={handleSearchPokemon} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="page__content">
+              <Main
+                pokemonList={pokemonList}
+                loading={loading}
+                error={error}
+                currentGeneration={currentGeneration}
+                onGenerationChange={handleGenerationChange}
+                onPokemonClick={handlePokemonClick}
+                handleSearchPokemon={handleSearchPokemon}
+              />
+              <About />
+            </div>
+          }
         />
-        {pokemonData && <PokemonCard pokemon={pokemonData} />}
-        <About/>
-        <Footer />
-      </div>
+
+        <Route
+          path="/pokemon/:name"
+          element={
+            currentPokemon ? (
+              <PokemonCard pokemon={currentPokemon} />
+            ) : (
+              <p>Loading...</p>
+            )
+          }
+        />
+      </Routes>
+      <Footer />
+
       {activeModal === "search-pokemon" && (
         <SearchPokemonModal
           isOpen={activeModal === "search-pokemon"}
@@ -79,5 +132,13 @@ function App() {
     </div>
   );
 }
+function AppWrapper() {
+  return (
+    <Router >
+     
+      <App />
+    </Router>
+  );
+}
 
-export default App;
+export default AppWrapper;

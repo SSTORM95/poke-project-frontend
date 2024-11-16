@@ -1,4 +1,5 @@
-const pokemonBaseUrl = "https://pokeapi.co/api/v2/pokemon";
+import { pokemonBaseUrl } from "./constants";
+
 
 function request(url, options) {
   return fetch(url, options).then(checkResponse);
