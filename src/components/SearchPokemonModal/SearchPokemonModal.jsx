@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { fetchPokemonData } from '../../utils/api';
+import { fetchPokemonData } from '../../utils/ThirdPartyApi';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
 
 function SearchPokemonModal({ handleModalClose, onSearch, isOpen }) {
     const [pokemonName, setPokemonName] = useState('');
-    const [error, setError] = useState(null);
+    
 
     const handleChange = (event) => {
         setPokemonName(event.target.value);
@@ -13,11 +13,10 @@ function SearchPokemonModal({ handleModalClose, onSearch, isOpen }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setError(null);
         fetchPokemonData(pokemonName)
             .then((data) => onSearch(data))
             .then(handleModalClose)
-            .catch((error) => setError(`Error fetching data: ${error.message}`));
+            .catch((error) => console.error(`Error fetching data: ${error.message}`));
     };
 
     return (

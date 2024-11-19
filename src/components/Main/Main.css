@@ -6,7 +6,7 @@
 
 .pokemon__info{
 display: flex;
-border: solid 1.5px red;
+border: dotted 1.5px green;
 }
 
 .pokemon__list{
@@ -14,10 +14,10 @@ border: solid 1.5px red;
     max-width: 1360px;
     display: grid;
     object-fit: contain;
-    grid-template-columns: repeat(auto-fit, 272px);
+    grid-template-columns: repeat(auto-fit, 453px);
     list-style: none;
-    background-color: white;
-   
+    
+    overflow: hidden;
 }
 
 .pokemon__name{
