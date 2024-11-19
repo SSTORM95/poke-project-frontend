@@ -45,7 +45,7 @@
 
 .pokemon__info{
 display: flex;
-border: dotted 1.5px rgba(3, 252, 3, 0.781);
+border: dotted 1.5px rgba(255, 255, 255, 0.781);
 background-color: rgb(193, 192, 192);
 justify-content: center;
 }
@@ -60,7 +60,7 @@ background-color: rgb(159, 159, 159);
     max-width: 1360px;
     display: grid;
    
-    grid-template-columns: repeat(auto-fit, 453px);
+    grid-template-columns: repeat(auto-fit, 400px);
     list-style: none;  
     justify-content: center;
 }

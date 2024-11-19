@@ -1,16 +1,21 @@
 .footer {
   margin: 0;
+  background-color: white;
 }
 
 .footer__text {
- margin-top: auto;
+  margin: 0;
+  font-family: "CabinetGrotesk";
+  display: flex;
+  gap: 20px;
 }
 
 .footer__creator {
- margin: 0;
+  margin: 0;
+  font-size: 16px;
 }
 
 .footer__date-year {
   margin: 0;
-
+  font-size: 16px;
 }

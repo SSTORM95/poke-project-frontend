@@ -15,6 +15,7 @@ import PokemonCard from "../PokemonCard/PokemonCard";
 import SearchPokemonModal from "../SearchPokemonModal/SearchPokemonModal";
 import { fetchPokemonList, fetchPokemonData } from "../../utils/api";
 import { generationRanges } from "../../utils/constants";
+import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg"
 
 function App() {
   const [pokemonData, setPokemonData] = useState(null);
@@ -120,6 +121,8 @@ function App() {
           }
         />
       </Routes>
+      <img className="pokeball__image" src={Poké_Ball_icon} alt="pokeball" />
+      <img className="pokeball__image" src={Poké_Ball_icon} alt="pokeball" />
       <Footer />
 
       {activeModal === "search-pokemon" && (
