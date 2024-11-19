@@ -1,27 +1,75 @@
 .pokemon{
-    max-width: 1360px;
-    margin: 0;
+    max-width: 100vw;
+  
+    font-family: "CabinetGrotesk";
     
 }
 
+.main__title{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.main__secondary-text{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.main__text-link{
+    color: red;
+}
+
+.main__text-link:hover{
+    cursor: pointer;
+    color: rgb(179, 7, 7)
+}
+
+.generation__tabs{
+    text-align: center;
+    font-size: 26px;
+}
+
+.generation__tabs-text{
+    background-color: red;
+}
+
+.generation__tabs-text:hover{
+    cursor: pointer;
+    background-color: rgb(210, 0, 0);
+}
+
+.active{
+    background-color: rgb(184, 0, 0);
+}
+
+
 .pokemon__info{
 display: flex;
-border: solid 1.5px red;
+border: dotted 1.5px rgba(3, 252, 3, 0.781);
+background-color: rgb(193, 192, 192);
+justify-content: center;
+}
+
+.pokemon__info:hover{
+cursor: pointer;
+background-color: rgb(159, 159, 159);
 }
 
 .pokemon__list{
     padding: 0;
     max-width: 1360px;
     display: grid;
-    object-fit: contain;
-    grid-template-columns: repeat(auto-fit, 272px);
-    list-style: none;
-    background-color: white;
    
+    grid-template-columns: repeat(auto-fit, 453px);
+    list-style: none;  
+    justify-content: center;
 }
+
+
 
 .pokemon__name{
     font-family: "CabinetGrotesk";
     font-size: 25px;
-    margin-top: 35px;
+    padding-top: 35px;
 }
+

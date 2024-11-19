@@ -6,7 +6,7 @@ function Header({handleSearchPokemon}) {
   return (
     <header className="header">
       <h1 className="header__text">
-        Poke <span className="highlight">-</span> World
+        POKE <span className="highlight">-</span> WORLD
       </h1>
       <Navigation/>
       <button

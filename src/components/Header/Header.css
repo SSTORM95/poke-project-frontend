@@ -1,20 +1,38 @@
 .header {
-   margin: 0;
-   display: flex;
-   padding-left: 50px;
-   background-color: red;
+  margin: 0;
+  display: flex;
+  padding-left: 10px;
+  background-color: red;
+  max-height: 80px;
+}
+
+.header__text {
+  margin: 0;
+  padding-top: 10px;
+  
+  color: rgb(255, 255, 255);
+  font-size: 45px;
+  font-family: "CabinetGrotesk";
+  margin-right: auto;
+}
+
+.header__search-pokemon-btn {
+  max-width: 150px;
+  max-height: 30px;
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 0;
+  background-color: white;
+}
+.header__search-pokemon-btn:hover{
+cursor: pointer;
+background-color: #cacaca;
+}
+.highlight {
+  color: black;
 }
 
 
-.header__text{
-    margin: 0;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    color: rgb(255, 255, 255);
-    font-size: 50px;
-}
-
-.highlight{
-    color: black;
-    
-}
+/*breaks at 700 and 475
