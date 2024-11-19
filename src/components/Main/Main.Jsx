@@ -11,7 +11,7 @@ function Main({
   currentGeneration,
   onGenerationChange,
   onPokemonClick,
-  handleSearchPokemon
+  handleSearchPokemon,
 }) {
   const navigate = useNavigate();
 
@@ -23,13 +23,22 @@ function Main({
     <div>
       <section className="pokemon">
         <h1 className="main__title">COMPLETE POKEDEX</h1>
-        <h2 className="main__secondary-text">Already know who are you looking for? <a className="main__text-link" onClick={handleSearchPokemon}>click here</a></h2>
+        <h2 className="main__secondary-text">
+          Already know who are you looking for?{" "}
+          <a className="main__text-link" onClick={handleSearchPokemon}>
+            click here
+          </a>
+        </h2>
         <div className="generation__tabs">
           {generationNames.map((gen, index) => (
             <button
               key={index}
               onClick={() => onGenerationChange(index + 1)}
-              className={currentGeneration === index + 1 ? "active" : "generation__tabs-text"} 
+              className={
+                currentGeneration === index + 1
+                  ? "active"
+                  : "generation__tabs-text"
+              }
             >
               {gen}
             </button>
@@ -52,6 +61,11 @@ function Main({
                 <h3 className="pokemon__name">
                   {pokemon.id}. {capitalize(pokemon.name)}
                 </h3>
+                <ul className="pokemon__types">
+                  {pokemon.types.map((typeInfo) => (
+                    <li key={typeInfo.type.name}>{typeInfo.type.name}</li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>
