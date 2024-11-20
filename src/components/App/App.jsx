@@ -12,10 +12,11 @@ import Main from "../Main/Main";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PokemonCard from "../PokemonCard/PokemonCard";
+import Preloader from "../Preloader/Preloader";
 import SearchPokemonModal from "../SearchPokemonModal/SearchPokemonModal";
 import { fetchPokemonList, fetchPokemonData } from "../../utils/api";
 import { generationRanges } from "../../utils/constants";
-import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg"
+import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg";
 
 function App() {
   const [pokemonData, setPokemonData] = useState(null);
@@ -25,6 +26,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [currentPokemon, setCurrentPokemon] = useState(null);
   const [error, setError] = useState(null);
+  const [notFound, setNotFound] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -64,11 +66,13 @@ function App() {
           });
           setPokemonList(filteredList);
           setLoading(false);
+          setNotFound(filteredList.length === 0);
         });
       })
       .catch((error) => {
         setError(`Error fetching data: ${error.message}`);
         setLoading(false);
+        setNotFound(true);
       });
   }, [currentGeneration]);
 
@@ -81,10 +85,12 @@ function App() {
         .then((data) => {
           setCurrentPokemon(data);
           setLoading(false);
+          setNotFound(!data);
         })
         .catch((err) => {
           setError(`Error fetching data: ${err.message}`);
           setLoading(false);
+          setNotFound(true);
         });
     }
   }, [location]);
@@ -96,15 +102,19 @@ function App() {
           path="/"
           element={
             <div className="page__content">
-              <Main
-                pokemonList={pokemonList}
-                loading={loading}
-                error={error}
-                currentGeneration={currentGeneration}
-                onGenerationChange={handleGenerationChange}
-                onPokemonClick={handlePokemonClick}
-                handleSearchPokemon={handleSearchPokemon}
-              />
+              {loading ? (
+                <Preloader />
+              ) : (
+                <Main
+                  pokemonList={pokemonList}
+                  error={error}
+                  currentGeneration={currentGeneration}
+                  onGenerationChange={handleGenerationChange}
+                  onPokemonClick={handlePokemonClick}
+                  handleSearchPokemon={handleSearchPokemon}
+                  notFound={notFound}
+                />
+              )}
               <About />
             </div>
           }
@@ -113,12 +123,24 @@ function App() {
         <Route
           path="/pokemon/:name"
           element={
-            currentPokemon ? (
+            loading ? (
+              <Preloader />
+            ) : error ? (
+              <p className="request__error">
+                Sorry, something went wrong during the request. There may be a
+                connection issue or the server may be down. Please try again
+                later.
+              </p>
+            ) : notFound ? (
+              <p className="request__error">Nothing found</p>
+            ) : currentPokemon ? (
               <PokemonCard pokemon={currentPokemon} />
             ) : (
-              <p>Loading...</p>
+              <p className="request__error">No data found</p>
             )
-          }
+          } // according to the project documents there isnt a need for a detailed error handling but to display those messages here
+          // so chose just to display them like this for a fast and easy way
+          // still if got it wrong will totally make the error handling as shown before on the program
         />
       </Routes>
       <img className="pokeball__image" src={Poké_Ball_icon} alt="pokeball" />
@@ -137,8 +159,7 @@ function App() {
 }
 function AppWrapper() {
   return (
-    <Router >
-     
+    <Router>
       <App />
     </Router>
   );

@@ -17,7 +17,7 @@ export const fetchPokemonData = (name) => {
 };
 
 export const fetchPokemonList = () => {
-  return request(`${pokemonBaseUrl}?limit=150`).then(
+  return request(`${pokemonBaseUrl}?limit=151`).then(
     (data) => data.results
   );
 };
