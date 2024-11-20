@@ -9,7 +9,7 @@
 .header__text {
   margin: 0;
   padding-top: 10px;
-  
+
   color: rgb(255, 255, 255);
   font-size: 45px;
   font-family: "CabinetGrotesk";
@@ -17,6 +17,7 @@
 }
 
 .header__search-pokemon-btn {
+  font-family: "CabinetGrotesk";
   max-width: 150px;
   max-height: 30px;
   margin-top: 20px;
@@ -26,13 +27,32 @@
   border: 0;
   background-color: white;
 }
-.header__search-pokemon-btn:hover{
-cursor: pointer;
-background-color: #cacaca;
+.header__search-pokemon-btn:hover {
+  cursor: pointer;
+  background-color: #cacaca;
 }
 .highlight {
   color: black;
 }
 
+/*breaks at 700 and 475*/
 
-/*breaks at 700 and 475
+@media screen and (max-width: 759px) {
+  .header__text {
+    font-size: 25px;
+    align-content: center;
+    padding-top: 0;
+  }
+  .header__search-pokemon-btn {
+    margin-top: 13px;
+  
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .header__search-pokemon-btn {
+  
+    font-size: 10px;
+  }
+}

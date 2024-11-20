@@ -38,4 +38,22 @@
   
 }
 
+@media screen and (max-width:759px) {
+  .pokeball__image{
+   right: -40px;
+    height: 80px;
+    width: 80px;
+    bottom: 30vh;
+    
+  }
+  
+  .pokeball__image:first-of-type{
+    
+    bottom: 30vh;
+    left: -40px;
+    height: 80px;
+    width: 80px;
+    
+  }
+}
 
