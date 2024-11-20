@@ -1,20 +1,130 @@
-.pokemon__card{
-    display: flex;
-    background-color: rgb(0, 176, 240);
+.pokemon__card {
+  font-family: "CabinetGrotesk";
 }
 
-.pokemon__name{
-    margin: 0;
+.pokemon__card-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.pokemon__image{
-    height: 200px;
-    width: 200px;
+.pokemon__card-id {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 40px;
 }
 
-.moves__list{
-    font-family: "arkpixel";
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+.pokemon__card-name {
+  margin: 0;
+  font-size: 40px;
+}
+
+.pokemon__card-image {
+  height: 300px;
+  width: 300px;
+}
+
+.pokemon__card-types {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+}
+
+.types__title {
+  margin: 0;
+  font-size: 25px;
+}
+
+.types__content {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+}
+
+.pokemon__moves {
+  display: flex;
+  justify-content: center;
+}
+
+.moves__title {
+  font-size: 25px;
+}
+
+.moves__list {
+  list-style: none;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 10px;
+}
+
+.pokemon__card-button {
+  margin-left: 10px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+}
+
+.pokemon__card-button:hover {
+  cursor: pointer;
+  background-color: rgb(162, 7, 7);
+}
+/* pokemon types */
+
+.pokemon_card.normal {
+  background: linear-gradient(to bottom, #a8a77a, white);
+}
+.pokemon_card.fire {
+  background: linear-gradient(to bottom, #ee8130, white);
+}
+.pokemon_card.water {
+  background: linear-gradient(to bottom, #6390f0, white);
+}
+.pokemon_card.electric {
+  background: linear-gradient(to bottom, #f7d02c, white);
+}
+.pokemon_card.grass {
+  background: linear-gradient(to bottom, #7ac74c, white);
+}
+.pokemon_card.ice {
+  background: linear-gradient(to bottom, #96d9d6, white);
+}
+.pokemon_card.fighting {
+  background: linear-gradient(to bottom, #c22e28, white);
+}
+.pokemon_card.poison {
+  background: linear-gradient(to bottom, #a33ea1, white);
+}
+.pokemon_card.ground {
+  background: linear-gradient(to bottom, #e2bf65, white);
+}
+.pokemon_card.flying {
+  background: linear-gradient(to bottom, #a98ff3, white);
+}
+.pokemon_card.psychic {
+  background: linear-gradient(to bottom, #f95587, white);
+}
+.pokemon_card.bug {
+  background: linear-gradient(to bottom, #a6b91a, white);
+}
+.pokemon_card.rock {
+  background: linear-gradient(to bottom, #b6a136, white);
+}
+.pokemon_card.ghost {
+  background: linear-gradient(to bottom, #735797, white);
+}
+.pokemon_card.dragon {
+  background: linear-gradient(to bottom, #6f35fc, white);
+}
+.pokemon_card.dark {
+  background: linear-gradient(to bottom, #705746, white);
+}
+.pokemon_card.steel {
+  background: linear-gradient(to bottom, #b7b7ce, white);
+}
+.pokemon_card.fairy {
+  background: linear-gradient(to bottom, #d685ad, white);
 }

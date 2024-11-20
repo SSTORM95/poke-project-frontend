@@ -58,12 +58,11 @@ function Main({
                 onClick={() => handleItemClick(pokemon)}
               >
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                <h3 className="pokemon__name">
-                  {pokemon.id}. {capitalize(pokemon.name)}
-                </h3>
+                <h3 className="pokemon__id">#{pokemon.id} </h3>
+                <h3 className="pokemon__name">{capitalize(pokemon.name)}</h3>
                 <ul className="pokemon__types">
                   {pokemon.types.map((typeInfo) => (
-                    <li key={typeInfo.type.name}>{typeInfo.type.name}</li>
+                    <li key={typeInfo.type.name}>{capitalize(typeInfo.type.name)}</li>
                   ))}
                 </ul>
               </li>

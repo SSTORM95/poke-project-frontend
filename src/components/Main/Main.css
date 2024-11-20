@@ -49,15 +49,17 @@
 .pokemon__info{
 display: flex;
 flex-direction: column;
-border: dotted 1.5px rgba(255, 255, 255, 0.781);
+border: solid 2px rgba(255, 255, 255, 0.781);
 background-color: rgb(193, 192, 192);
 justify-content: center;
-
+border-radius: 10px;
+transition: transform 0.3s ease-in-out;
 }
 
 .pokemon__info:hover{
 cursor: pointer;
 background-color: rgb(159, 159, 159);
+transform: translateY(-5px);
 }
 
 .pokemon__list{
@@ -68,15 +70,20 @@ background-color: rgb(159, 159, 159);
     grid-template-columns: repeat(auto-fit, 350px);
     list-style: none;  
     justify-content: center;
+    gap: 5px;
+
 }
 
-
+.pokemon__id{
+    margin:0;
+    padding-left: 10px;
+    font-size: 22.5px;
+}
 
 .pokemon__name{
-    
     font-size: 45px;
     padding-top: 10px;
-    text-align: center;
+    padding-left: 10px;
 }
 
 .pokemon__types{
