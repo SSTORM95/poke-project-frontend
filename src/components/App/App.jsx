@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +19,6 @@ import { generationRanges } from "../../utils/constants";
 import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg";
 
 function App() {
-  const [pokemonData, setPokemonData] = useState(null);
   const [pokemonList, setPokemonList] = useState([]);
   const [currentGeneration, setCurrentGeneration] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -40,7 +39,7 @@ function App() {
   };
 
   const onPokemonSearch = (data) => {
-    setPokemonData(data);
+    
     navigate(`/pokemon/${data.name}`);
   };
 
@@ -49,7 +48,7 @@ function App() {
   };
 
   const handlePokemonClick = (pokemon) => {
-    setPokemonData(pokemon);
+    navigate(`/pokemon/${pokemon.name}`);
   };
 
   useEffect(() => {

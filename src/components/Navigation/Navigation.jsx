@@ -1,5 +1,4 @@
-import React from "react";
-import "./Navigation.css"
+import "./Navigation.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navigation() {
@@ -15,10 +14,16 @@ function Navigation() {
     <nav>
       <ul className="navigation">
         <li className="navigation__links">
-          <Link className="navigation__links" to="/">Home</Link>
+          <Link className="navigation__links" to="/">
+            Home
+          </Link>
         </li>
-        <li >
-          <a className="navigation__links" href="#about" onClick={handleAboutClick}>
+        <li>
+          <a
+            className="navigation__links"
+            href="#about"
+            onClick={handleAboutClick}
+          >
             About
           </a>
         </li>

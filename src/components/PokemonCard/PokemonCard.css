@@ -61,7 +61,6 @@
 }
 
 .pokemon__card-button {
-  margin-left: 10px;
   height: 50px;
   border-radius: 10px;
   background-color: red;
@@ -72,6 +71,7 @@
   cursor: pointer;
   background-color: rgb(162, 7, 7);
 }
+
 /* pokemon types */
 
 .pokemon_card.normal {
@@ -127,4 +127,27 @@
 }
 .pokemon_card.fairy {
   background: linear-gradient(to bottom, #d685ad, white);
+}
+
+@media screen and (max-width: 1059px) {
+  .moves__list {
+    font-size: 20px;
+
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+@media screen and (max-width: 759px) {
+  .moves__list {
+    font-size: 15px;
+
+    grid-template-columns: repeat(2, 150px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .moves__list {
+    font-size: 15px;
+
+    grid-template-columns: repeat(1, 150px);
+  }
 }

@@ -1,27 +1,22 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
-function Header({handleSearchPokemon}) {
+function Header({ handleSearchPokemon }) {
   return (
     <header className="header">
       <h1 className="header__text">
         POKE <span className="highlight">-</span> WORLD
       </h1>
-      <Navigation/>
+      <Navigation />
       <button
-              onClick={handleSearchPokemon}
-              className="header__search-pokemon-btn"
-              type="button"
-            >
-              Search Pokemon
-            </button>
-          
+        onClick={handleSearchPokemon}
+        className="header__search-pokemon-btn"
+        type="button"
+      >
+        Search Pokemon
+      </button>
     </header>
   );
 }
 
 export default Header;
-
-
-

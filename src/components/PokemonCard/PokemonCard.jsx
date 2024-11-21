@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./PokemonCard.css";
 import { capitalize } from "../../utils/capitalizer";
 import { useNavigate } from "react-router-dom";
@@ -61,8 +61,11 @@ function PokemonCard({ pokemon }) {
             ))}
         </ul>
       </div>
-
-      <button className="pokemon__card-button" onClick={handleBackClick}>Back to Pokedex</button>
+      <div className="button__container">
+        <button className="pokemon__card-button" onClick={handleBackClick}>
+          Back to Pokedex
+        </button>
+      </div>
     </div>
   );
 }

@@ -45,14 +45,13 @@
   }
   .header__search-pokemon-btn {
     margin-top: 13px;
-  
+
     font-size: 15px;
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   .header__search-pokemon-btn {
-  
     font-size: 10px;
   }
 }

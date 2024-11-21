@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Main.css";
 import { generationNames } from "../../utils/constants";
@@ -11,11 +11,10 @@ function Main({
   onGenerationChange,
   onPokemonClick,
   handleSearchPokemon,
-  notFound
+  notFound,
 }) {
   const navigate = useNavigate();
   const [visibleCount, SetVisibleCount] = useState(3);
-
 
   const handleItemClick = (pokemon) => {
     onPokemonClick(pokemon);
@@ -59,7 +58,7 @@ function Main({
           <p className="request__error">Nothing found</p>
         ) : (
           <ul className="pokemon__list">
-              {pokemonList.slice(0, visibleCount).map((pokemon, index) => (
+            {pokemonList.slice(0, visibleCount).map((pokemon, index) => (
               <li
                 className="pokemon__info"
                 key={index}
@@ -70,16 +69,22 @@ function Main({
                 <h3 className="pokemon__name">{capitalize(pokemon.name)}</h3>
                 <ul className="pokemon__types">
                   {pokemon.types.map((typeInfo) => (
-                    <li key={typeInfo.type.name}>{capitalize(typeInfo.type.name)}</li>
+                    <li key={typeInfo.type.name}>
+                      {capitalize(typeInfo.type.name)}
+                    </li>
                   ))}
                 </ul>
               </li>
             ))}
           </ul>
         )}
-        {pokemonList.length > visibleCount && !notFound && (
-          <button className="show__more-btn"onClick={handleShowMore}>Show more</button>
-        )}
+        <div className="button__container">
+          {pokemonList.length > visibleCount && !notFound && (
+            <button className="show__more-btn" onClick={handleShowMore}>
+              Show more
+            </button>
+          )}
+        </div>
       </section>
     </div>
   );

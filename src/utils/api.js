@@ -1,6 +1,5 @@
 import { pokemonBaseUrl } from "./constants";
 
-
 function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
@@ -17,7 +16,5 @@ export const fetchPokemonData = (name) => {
 };
 
 export const fetchPokemonList = () => {
-  return request(`${pokemonBaseUrl}?limit=151`).then(
-    (data) => data.results
-  );
+  return request(`${pokemonBaseUrl}?limit=151`).then((data) => data.results);
 };

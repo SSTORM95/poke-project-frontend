@@ -1,7 +1,6 @@
 .page {
   background-color: #d0d0d0;
   background-size: auto;
-  
 }
 
 .page__content {
@@ -20,44 +19,39 @@
   opacity: 0px;
 }
 
-.pokeball__image{
+.pokeball__image {
   position: fixed;
   right: -50px;
   height: 100px;
   width: 100px;
   bottom: 50vh;
-  
 }
 
-.pokeball__image:first-of-type{
+.pokeball__image:first-of-type {
   position: fixed;
   bottom: 50vh;
   left: -50px;
   height: 100px;
   width: 100px;
-  
 }
 
-@media screen and (max-width:759px) {
-  .pokeball__image{
-   right: -40px;
+@media screen and (max-width: 759px) {
+  .pokeball__image {
+    right: -40px;
     height: 80px;
     width: 80px;
     bottom: 30vh;
-    
   }
-  
-  .pokeball__image:first-of-type{
-    
+
+  .pokeball__image:first-of-type {
     bottom: 30vh;
     left: -40px;
     height: 80px;
     width: 80px;
-    
   }
 }
 
-.request__error{
+.request__error {
   display: flex;
   color: red;
   justify-content: center;
