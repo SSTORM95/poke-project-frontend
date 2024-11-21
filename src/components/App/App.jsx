@@ -8,7 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Main from "../Main/Main.jsx";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PokemonCard from "../PokemonCard/PokemonCard";
