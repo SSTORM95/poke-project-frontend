@@ -39,7 +39,6 @@ function App() {
   };
 
   const onPokemonSearch = (data) => {
-    
     navigate(`/pokemon/${data.name}`);
   };
 
@@ -101,19 +100,17 @@ function App() {
           path="/"
           element={
             <div className="page__content">
-              {loading ? (
-                <Preloader />
-              ) : (
-                <Main
-                  pokemonList={pokemonList}
-                  error={error}
-                  currentGeneration={currentGeneration}
-                  onGenerationChange={handleGenerationChange}
-                  onPokemonClick={handlePokemonClick}
-                  handleSearchPokemon={handleSearchPokemon}
-                  notFound={notFound}
-                />
-              )}
+              <Main
+                pokemonList={pokemonList}
+                error={error}
+                currentGeneration={currentGeneration}
+                onGenerationChange={handleGenerationChange}
+                onPokemonClick={handlePokemonClick}
+                handleSearchPokemon={handleSearchPokemon}
+                notFound={notFound}
+                loading={loading}
+              />
+
               <About />
             </div>
           }

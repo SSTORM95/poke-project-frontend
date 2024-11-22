@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Main.css";
 import { generationNames } from "../../utils/constants";
 import { capitalize } from "../../utils/capitalizer";
+import Preloader from "../Preloader/Preloader";
 
 function Main({
   pokemonList,
@@ -12,6 +13,7 @@ function Main({
   onPokemonClick,
   handleSearchPokemon,
   notFound,
+  loading
 }) {
   const navigate = useNavigate();
   const [visibleCount, SetVisibleCount] = useState(3);
@@ -33,7 +35,7 @@ function Main({
             click here
           </a>
         </h2>
-        <div className="generation__tabs">
+        <div className={`generation__tabs ${loading ? 'loading__padding' : ''}`}>
           {generationNames.map((gen, index) => (
             <button
               key={index}
@@ -56,7 +58,7 @@ function Main({
           </p>
         ) : notFound ? (
           <p className="request__error">Nothing found</p>
-        ) : (
+        ) : ( <> {loading ? <Preloader /> : (
           <ul className="pokemon__list">
             {pokemonList.slice(0, visibleCount).map((pokemon, index) => (
               <li
@@ -76,7 +78,8 @@ function Main({
                 </ul>
               </li>
             ))}
-          </ul>
+          </ul>)}
+          </>
         )}
         <div className="button__container">
           {pokemonList.length > visibleCount && !notFound && (

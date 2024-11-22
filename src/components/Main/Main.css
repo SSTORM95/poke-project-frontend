@@ -28,6 +28,10 @@
   font-size: 26px;
 }
 
+.loading__padding{
+  padding-bottom: 250px;
+}
+
 .generation__tabs-text {
   background-color: red;
   color: white;
