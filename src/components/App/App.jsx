@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   useNavigate,
@@ -158,7 +158,7 @@ function App() {
 }
 function AppWrapper() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <App />
     </Router>
   );
