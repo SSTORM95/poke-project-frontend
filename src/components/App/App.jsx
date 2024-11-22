@@ -158,7 +158,7 @@ function App() {
 }
 function AppWrapper() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <App />
     </Router>
   );
