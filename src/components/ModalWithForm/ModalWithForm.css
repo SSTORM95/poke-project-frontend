@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   visibility: hidden;
-  font-family: "CabinetGrotesk";
+  font-family: "CabinetGrotesk", sans-serif, Arial;
 }
 
 .modal_opened {
@@ -64,7 +64,7 @@
 }
 
 .modal__input:focus {
-  outline: none;
+  outline: red groove 2px;
 }
 
 .modal__legend {

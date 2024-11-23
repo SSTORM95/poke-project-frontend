@@ -1,4 +1,4 @@
-import { pokemonBaseUrl } from "./constants";
+import { POKEMON_BASE_URL } from "./constants";
 
 function request(url, options) {
   return fetch(url, options).then(checkResponse);
@@ -12,9 +12,9 @@ function checkResponse(res) {
 }
 
 export const fetchPokemonData = (name) => {
-  return request(`${pokemonBaseUrl}/${name.toLowerCase()}`);
+  return request(`${POKEMON_BASE_URL}/${name.toLowerCase()}`);
 };
 
 export const fetchPokemonList = () => {
-  return request(`${pokemonBaseUrl}?limit=901`).then((data) => data.results);
+  return request(`${POKEMON_BASE_URL}?limit=386`).then((data) => data.results);
 };

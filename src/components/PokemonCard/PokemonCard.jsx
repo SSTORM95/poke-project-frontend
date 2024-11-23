@@ -23,7 +23,7 @@ function PokemonCard({ pokemon }) {
       className={`pokemon__card ${getTypeClass(pokemon.types[0].type.name)}`}
     >
       <div className="pokemon__card-info">
-        <h3 className="pokemon__card-id">#{pokemon.order}</h3>
+        <h1 className="pokemon__card-id">#{pokemon.order}</h1>
         <h2 className="pokemon__card-name">{capitalize(pokemon.name)}</h2>
 
         <img

@@ -6,7 +6,7 @@
 }
 
 .navigation__links{
-    font-family: "CabinetGrotesk";
+    font-family: "CabinetGrotesk", sans-serif, Arial;
     color: white;
     text-decoration: none;
     font-size: 30px;

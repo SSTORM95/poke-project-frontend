@@ -15,7 +15,7 @@ import PokemonCard from "../PokemonCard/PokemonCard";
 import Preloader from "../Preloader/Preloader";
 import SearchPokemonModal from "../SearchPokemonModal/SearchPokemonModal";
 import { fetchPokemonList, fetchPokemonData } from "../../utils/api";
-import { generationRanges } from "../../utils/constants";
+import { GENERATION_RANGES } from "../../utils/constants";
 import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg";
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
         ).then((detailedList) => {
           const filteredList = detailedList.filter((pokemon) => {
             const id = pokemon.id;
-            const range = generationRanges[currentGeneration - 1];
+            const range = GENERATION_RANGES[currentGeneration - 1];
             return id >= range.start && id <= range.end;
           });
           setPokemonList(filteredList);
@@ -110,7 +110,16 @@ function App() {
                 notFound={notFound}
                 loading={loading}
               />
-
+              <img
+                className="pokeball__image"
+                src={Poké_Ball_icon}
+                alt="pokeball"
+              />
+              <img
+                className="pokeball__image"
+                src={Poké_Ball_icon}
+                alt="pokeball"
+              />
               <About />
             </div>
           }
@@ -139,8 +148,6 @@ function App() {
           // still if got it wrong will totally make the error handling as shown before on the program
         />
       </Routes>
-      <img className="pokeball__image" src={Poké_Ball_icon} alt="pokeball" />
-      <img className="pokeball__image" src={Poké_Ball_icon} alt="pokeball" />
       <Footer />
 
       {activeModal === "search-pokemon" && (

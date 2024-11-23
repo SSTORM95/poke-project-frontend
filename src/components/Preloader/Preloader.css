@@ -13,7 +13,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-
+ align-content: center;
   animation: spin 0.75s infinite linear;
 }
 

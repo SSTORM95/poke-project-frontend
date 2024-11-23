@@ -1,5 +1,5 @@
 .pokemon__card {
-  font-family: "CabinetGrotesk";
+  font-family: "CabinetGrotesk", sans-serif, Arial;
 }
 
 .pokemon__card-info {

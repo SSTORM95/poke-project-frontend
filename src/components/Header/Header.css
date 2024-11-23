@@ -4,20 +4,18 @@
   padding-left: 10px;
   background-color: red;
   max-height: 80px;
+  font-family: "CabinetGrotesk", sans-serif, Arial;
 }
 
 .header__text {
   margin: 0;
   padding-top: 10px;
-
   color: rgb(255, 255, 255);
   font-size: 45px;
-  font-family: "CabinetGrotesk";
   margin-right: auto;
 }
 
 .header__search-pokemon-btn {
-  font-family: "CabinetGrotesk";
   max-width: 150px;
   max-height: 30px;
   margin-top: 20px;

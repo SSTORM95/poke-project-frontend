@@ -1,7 +1,6 @@
 .pokemon {
   max-width: 100vw;
-
-  font-family: "CabinetGrotesk";
+  font-family: "CabinetGrotesk", sans-serif, Arial;
 }
 
 .main__title {
@@ -28,7 +27,7 @@
   font-size: 26px;
 }
 
-.loading__padding{
+.loading__padding {
   padding-bottom: 250px;
 }
 
@@ -65,7 +64,7 @@
 
 .pokemon__list {
   padding: 0;
-  max-width: 1360px;
+
   display: grid;
   font-family: "CabinetGrotesk";
   grid-template-columns: repeat(auto-fit, 350px);
@@ -109,6 +108,7 @@
   border-radius: 10px;
   background-color: red;
   color: white;
+  margin-top: 30px;
 }
 
 .show__more-btn:hover {
@@ -133,7 +133,6 @@
     font-size: 20px;
     padding-bottom: 10px;
   }
- 
 }
 
 @media screen and (max-width: 759px) {
