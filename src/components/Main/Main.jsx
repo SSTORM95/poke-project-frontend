@@ -16,15 +16,12 @@ function Main({
   loading,
 }) {
   const navigate = useNavigate();
-  const [visibleCount, SetVisibleCount] = useState(3);
 
   const handleItemClick = (pokemon) => {
     onPokemonClick(pokemon);
     navigate(`/pokemon/${pokemon.name}`);
   };
-  const handleShowMore = () => {
-    SetVisibleCount((prevCount) => prevCount + 3);
-  };
+
   return (
     <div className="pokemon">
       <h1 className="main__title">COMPLETE POKEDEX</h1>
@@ -64,7 +61,7 @@ function Main({
             <Preloader />
           ) : (
             <ul className="pokemon__list">
-              {pokemonList.slice(0, visibleCount).map((pokemon, index) => (
+              {pokemonList.slice(0).map((pokemon, index) => (
                 <li
                   className="pokemon__info"
                   key={index}
@@ -86,13 +83,7 @@ function Main({
           )}
         </>
       )}
-      <div className="button__container">
-        {pokemonList.length > visibleCount && !notFound && !loading && (
-          <button className="show__more-btn" onClick={handleShowMore}>
-            Show more
-          </button>
-        )}
-      </div>
+
     </div>
   );
 }

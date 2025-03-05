@@ -1,22 +1,27 @@
-import { useEffect } from "react";
+
 import "./PokemonCard.css";
 import { capitalize } from "../../utils/capitalizer";
 import { useNavigate } from "react-router-dom";
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, scrollPosition }) {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/");
+    const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+    navigate('/'); // Navigate back to the main page
+    if (savedScrollPosition) {
+        setTimeout(() => {
+            window.scrollTo(0, parseInt(savedScrollPosition)); // Restore the saved scroll position
+            sessionStorage.removeItem('scrollPosition'); // Clear the stored scroll position
+        }, 0);
+    }
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0); //had issues with the pokemon card being displayed from where the last page was at leading to displaying at the bottom
-  }, []);
 
   const getTypeClass = (type) => {
     return `pokemon_card ${type}`;
   };
+
+  
 
   return (
     <div

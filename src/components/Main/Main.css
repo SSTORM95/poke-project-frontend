@@ -67,7 +67,7 @@
 
   display: grid;
   font-family: "CabinetGrotesk";
-  grid-template-columns: repeat(auto-fit, 350px);
+  grid-template-columns: repeat(auto-fit,200px);
   list-style: none;
   justify-content: center;
   gap: 5px;
@@ -80,7 +80,7 @@
 }
 
 .pokemon__name {
-  font-size: 45px;
+  font-size: 2.45vw;
   padding-top: 10px;
   padding-left: 10px;
   margin: 0;
@@ -93,7 +93,7 @@
   list-style: none;
   padding: 0;
   padding-bottom: 20px;
-  font-size: 30px;
+  font-size: 1.5vw;
   font-weight: 700;
   padding-top: 10px;
 }

@@ -14,7 +14,7 @@ import Footer from "../Footer/Footer";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import Preloader from "../Preloader/Preloader";
 import SearchPokemonModal from "../SearchPokemonModal/SearchPokemonModal";
-import { fetchPokemonList, fetchPokemonData } from "../../utils/api";
+import { fetchPokemonData, fetchPokemonByGeneration } from "../../utils/api";
 import { GENERATION_RANGES } from "../../utils/constants";
 import Poké_Ball_icon from "../../images/Poké_Ball_icon.svg";
 
@@ -43,36 +43,36 @@ function App() {
   };
 
   const handleGenerationChange = (generationId) => {
-    setCurrentGeneration(generationId);
-  };
+    if (generationId !== currentGeneration) {
+      setPokemonList([]); // Clear the pokemonList state
+      setCurrentGeneration(generationId);
+  
+  };}
 
   const handlePokemonClick = (pokemon) => {
+    sessionStorage.setItem('scrollPosition', window.scrollY); 
     navigate(`/pokemon/${pokemon.name}`);
   };
 
   useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition));
+        }
     setLoading(true);
-    fetchPokemonList()
-      .then((list) => {
-        return Promise.all(
-          list.map((pokemon) => fetchPokemonData(pokemon.name))
-        ).then((detailedList) => {
-          const filteredList = detailedList.filter((pokemon) => {
-            const id = pokemon.id;
-            const range = GENERATION_RANGES[currentGeneration - 1];
-            return id >= range.start && id <= range.end;
-          });
-          setPokemonList(filteredList);
-          setLoading(false);
-          setNotFound(filteredList.length === 0);
+    const { start, end } = GENERATION_RANGES[currentGeneration - 1];
+    fetchPokemonByGeneration(start, end)
+        .then(detailedList => {
+            setPokemonList(detailedList);
+            setLoading(false);
+            setNotFound(detailedList.length === 0);
+        })
+        .catch(error => {
+            setError(`Error fetching data: ${error.message}`);
+            setLoading(false);
+            setNotFound(true);
         });
-      })
-      .catch((error) => {
-        setError(`Error fetching data: ${error.message}`);
-        setLoading(false);
-        setNotFound(true);
-      });
-  }, [currentGeneration]);
+}, [currentGeneration]);
 
   useEffect(() => {
     const pathSegments = location.pathname.split("/");
